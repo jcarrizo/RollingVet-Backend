@@ -2,9 +2,12 @@ const express = require('express');
 const User = require('../models/userModel')
 const router = express.Router()
 
+
+
 router.get('/', async (req, res) => {
   try {
-    const getUser = await User.find({ email: "jcarrizo15@gmail.com" })
+    const { email } = req.body
+    const getUser = await User.find({ email: email })
     return res.json({
       getUser,
       message: "salio todo bien"
@@ -30,14 +33,14 @@ router.delete('/:userId', async (req, res) => {
 
 router.post('/', async (req, res) => {
   try {
-    const newUser = new User({
+    const newUser = await new User({
       email: req.body.email,
       password: req.body.password
     });
 
     const user = await newUser.save()
 
-    return res.json(user)
+    return res.json("correcto")
   } catch (error) {
     return res.json({
       message: error

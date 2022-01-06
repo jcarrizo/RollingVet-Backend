@@ -6,7 +6,6 @@ const router = express.Router()
 
 router.get('/', async (req, res) => {
   try {
-    const { email } = req.body
     const getUser = await User.find({ email: email })
     return res.json({
       getUser,

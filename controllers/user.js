@@ -19,4 +19,12 @@ const AgregarUsuario = async (req, res) => {
   }
 }
 
-module.exports = { AgregarUsuario }
+const ConsultarUser = async (req, res) => {
+  console.log(req.body)
+  const { email, password } = req.body
+  const logins = await User.find({ email: email })
+  res.json(logins);
+}
+
+
+module.exports = { AgregarUsuario, ConsultarUser }

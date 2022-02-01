@@ -1,10 +1,10 @@
 const express = require('express');
 const router = express.Router()
-const { AgregarUsuario } = require('../controllers/user');
+const { AgregarUsuario, ConsultarUser } = require('../controllers/user');
 
 router.post('/', AgregarUsuario);
 
-
+router.post('/login', ConsultarUser);
 // router.get('/', async (req, res) => {
 //   try {
 //     const getUser = await User.find({ email: email })

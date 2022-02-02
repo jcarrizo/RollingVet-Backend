@@ -26,5 +26,23 @@ const ConsultarUser = async (req, res) => {
   res.json(logins);
 }
 
+const ObtenerTodosUsuarios = async (req, res) => {
+  const logins = await User.find()
+  console.log(logins)
+  res.json(logins);
+}
 
-module.exports = { AgregarUsuario, ConsultarUser }
+const EliminarUser = async (req, res) => {
+  console.log(req.body)
+  try {
+    const getUser = await User.findByIdAndDelete(req.body.id)
+    return res.json(getUser)
+  } catch (error) {
+    return res.json({
+      message: error
+    })
+  }
+}
+
+
+module.exports = { AgregarUsuario, ConsultarUser, ObtenerTodosUsuarios, EliminarUser }

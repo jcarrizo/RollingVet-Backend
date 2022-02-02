@@ -1,10 +1,14 @@
 const express = require('express');
 const router = express.Router()
-const { AgregarUsuario, ConsultarUser } = require('../controllers/user');
+const { AgregarUsuario, ConsultarUser, ObtenerTodosUsuarios, EliminarUser } = require('../controllers/user');
 
 router.post('/', AgregarUsuario);
 
 router.post('/login', ConsultarUser);
+
+router.post('/allUsers', ObtenerTodosUsuarios);
+
+router.post('/deleteUser', EliminarUser);
 // router.get('/', async (req, res) => {
 //   try {
 //     const getUser = await User.find({ email: email })

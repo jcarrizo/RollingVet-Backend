@@ -5,7 +5,6 @@ const PORT = process.env.PORT
 require('../db/connection')
 const userRoute = require('../routes/user')
 const productRoute = require('../routes/products')
-const loginRoute = require('../routes/login')
 
 app.use(express.json());
 app.use((req, res, next) => {
@@ -17,5 +16,4 @@ app.use((req, res, next) => {
 })
 app.use('/api/products', productRoute);
 app.use('/api/user', userRoute);
-app.use('/api/login', loginRoute)
 app.listen(PORT, console.log(`server escuchando ${PORT}`));

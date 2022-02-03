@@ -1,4 +1,4 @@
-const User = require('../models/userModel')
+const User = require("../models/userModel");
 
 const AgregarUsuario = async (req, res) => {
   try {
@@ -8,41 +8,43 @@ const AgregarUsuario = async (req, res) => {
       typeProfile: req.body.typeProfile,
       userName: req.body.userName,
     });
-
-    const user = await newUser.save()
-
-    return res.json("correcto")
+    const user = await newUser.save();
+    return res.json("correcto");
   } catch (error) {
     return res.json({
-      message: error
-    })
+      message: error,
+    });
   }
-}
+};
 
 const ConsultarUser = async (req, res) => {
-  console.log(req.body)
-  const { email, password } = req.body
-  const logins = await User.find({ email: email })
+  // console.log(req.body)
+  const { email, password } = req.body;
+  const logins = await User.find({ email: email });
   res.json(logins);
-}
+};
 
 const ObtenerTodosUsuarios = async (req, res) => {
-  const logins = await User.find()
-  console.log(logins)
+  const logins = await User.find();
+  // console.log(logins)
   res.json(logins);
-}
+};
 
 const EliminarUser = async (req, res) => {
-  console.log(req.body)
+  // console.log(req.body)
   try {
-    const getUser = await User.findByIdAndDelete(req.body.id)
-    return res.json(getUser)
+    const getUser = await User.findByIdAndDelete(req.body.id);
+    return res.json(getUser);
   } catch (error) {
     return res.json({
-      message: error
-    })
+      message: error,
+    });
   }
-}
+};
 
-
-module.exports = { AgregarUsuario, ConsultarUser, ObtenerTodosUsuarios, EliminarUser }
+module.exports = {
+  AgregarUsuario,
+  ConsultarUser,
+  ObtenerTodosUsuarios,
+  EliminarUser,
+};

@@ -9,10 +9,6 @@ const UserSchema = mongoose.Schema({
     type: String,
     require: true
   },
-  typeProfile: {
-    type: String,
-    require: true
-  },
   userName: {
     type: String,
     require: true

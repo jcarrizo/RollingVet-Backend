@@ -5,7 +5,6 @@ const AgregarUsuario = async (req, res) => {
     const newUser = await new User({
       email: req.body.email,
       password: req.body.password,
-      typeProfile: req.body.typeProfile,
       userName: req.body.userName,
     });
     const user = await newUser.save();
@@ -18,9 +17,10 @@ const AgregarUsuario = async (req, res) => {
 };
 
 const ConsultarUser = async (req, res) => {
-  // console.log(req.body)
+  console.log(req.body)
   const { email, password } = req.body;
   const logins = await User.find({ email: email });
+  console.log(logins)
   res.json(logins);
 };
 

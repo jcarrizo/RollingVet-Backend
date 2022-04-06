@@ -1,11 +1,11 @@
 const mongoose = require('mongoose')
 
 const PatientsSchema = mongoose.Schema({
-  patientAnimal: {
+  patientAnimalName: {
     type: String,
     require: true
   },
-  OwnerName: {
+  ownerName: {
     type: String,
     require: true
   },

@@ -26,7 +26,21 @@ const ObtenerTodosPacientes = async (req, res) => {
   res.json(patiens);
 };
 
+const EliminarPaciente = async (req, res) => {
+  console.log(req.body)
+  try {
+    const getPatients = await Patiens.findByIdAndDelete(req.body._id);
+    return res.json(getPatients);
+  } catch (error) {
+    return res.json({
+      message: error,
+    });
+  }
+};
+
+
 module.exports = {
   AgregarPaciente,
-  ObtenerTodosPacientes
+  ObtenerTodosPacientes,
+  EliminarPaciente
 };

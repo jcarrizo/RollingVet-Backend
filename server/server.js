@@ -5,7 +5,6 @@ const PORT = process.env.PORT
 require('../db/connection')
 const userRoute = require('../routes/user')
 const patientsRoute = require('../routes/patients')
-const productRoute = require('../routes/products')
 
 app.use(express.json());
 app.use((req, res, next) => {
@@ -15,7 +14,7 @@ app.use((req, res, next) => {
   res.header('Allow', 'GET, POST, OPTIONS, PUT, DELETE');
   next();
 })
-app.use('/api/products', productRoute);
+
 app.use('/api/user', userRoute);
 app.use('/api/patients', patientsRoute);
 app.listen(PORT, console.log(`server escuchando ${PORT}`));
